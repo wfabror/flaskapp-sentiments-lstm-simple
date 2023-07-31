@@ -1,0 +1,11 @@
+flask
+nltk
+numpy
+pandas
+matplotlib
+sastrawi
+deep_translator
+textblob
+scikit-learn
+keras
+tensorflow

@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container fluid">
+        <div class="justify-center">
+
+            <br>
+            <h1>
+                Hasil Pemodelan dan Akurasi
+            </h1>
+            
+            <br>
+            <div class="row">
+                <div class="col-sm-4 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Data Uji 900
+                        </div>
+                        <div class="card-body">
+                            Accuracy: {{ top_acc_uji900 }}%
+                        </div>
+
+                        <div class="card-header">
+                            Predict Label
+                        </div>
+                        <div class="card-body">
+                            {{ df_res_uji900 | safe}}
+                        </div>
+                        <div class="card-header">
+                            Accuracy 10 Epoch
+                        </div>
+                        <div class="card-body">
+                            {% for i in range(1, len_uji900)  %}
+                                <li>Epoch - {{ i }} : {{ res_uji900[i] }}% </li>
+                            {% endfor %}
+                        </div>
+                        <div class="card-header">
+                            Accuracy 10 Epoch
+                        </div>
+                        <div class="card-body">
+                            <canvas id="Chard900" width="auto" height="auto"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Data Uji 1400
+                        </div>
+                        <div class="card-body">
+                            Accuracy: {{ top_acc_uji1400 }}%
+                        </div>
+
+                        <div class="card-header">
+                            Predict Label
+                        </div>
+                        <div class="card-body">
+                            {{ df_res_uji1400 | safe}}
+                        </div>
+                        <div class="card-header">
+                            Accuracy 10 Epoch
+                        </div>
+                        <div class="card-body">
+                            {% for i in range(1, len_uji1400)  %}
+                                <li>Epoch - {{ i }} : {{ res_uji1400[i] }}% </li>
+                            {% endfor %}
+                        </div>
+                        <div class="card-header">
+                            Accuracy 10 Epoch
+                        </div>
+                        <div class="card-body">
+                            <canvas id="Chard1400" width="auto" height="auto"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Data Uji 2100
+                        </div>
+                        <div class="card-body">
+                            Accuracy: {{ top_acc_uji2100 }}%
+                        </div>
+
+                        <div class="card-header">
+                            Predict Label
+                        </div>
+                        <div class="card-body">
+                            {{ df_res_uji2100 | safe}}
+                        </div>
+                        <div class="card-header">
+                            Accuracy 10 Epoch
+                        </div>
+                        <div class="card-body">
+                            {% for i in range(1, len_uji2100)  %}
+                                <li>Epoch - {{ i }} : {{ res_uji2100[i] }}% </li>
+                            {% endfor %}
+                        </div>
+                        <div class="card-header">
+                            Accuracy 10 Epoch
+                        </div>
+                        <div class="card-body">
+                            <canvas id="Chard2100" width="auto" height="auto"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    Summary Accuracy Score
+                </div>
+                <div class="card-body">
+                    <canvas id="Chard" width="100" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}
+    <script>
+        const xValues_uji900 = ['1','2','3','4','5','6','7','8','9','10'];
+        const yValues_uji900 = {{ res_uji900 }};
+        
+        let ctx900 = document.getElementById('Chard900').getContext('2d');
+        let myChart900 = new Chart(ctx900, {
+        type: 'line',
+        data: {
+            labels: xValues_uji900,
+            datasets: [{
+                label: 'Accuracy %',
+                data: yValues_uji900,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+
+
+        const xValues_uji1400 = ['1','2','3','4','5','6','7','8','9','10'];
+        const yValues_uji1400 = {{ res_uji1400 }};
+        
+        let ctx1400 = document.getElementById('Chard1400').getContext('2d');
+        let myChart1400 = new Chart(ctx1400, {
+        type: 'line',
+        data: {
+            labels: xValues_uji1400,
+            datasets: [{
+                label: 'Accuracy %',
+                data: yValues_uji1400,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+
+        const xValues_uji2100 = ['1','2','3','4','5','6','7','8','9','10'];
+        const yValues_uji2100 = {{ res_uji2100 }};
+        
+        let ctx2100 = document.getElementById('Chard2100').getContext('2d');
+        let myChart2100 = new Chart(ctx2100, {
+        type: 'line',
+        data: {
+            labels: xValues_uji900,
+            datasets: [{
+                label: 'Accuracy %',
+                data: yValues_uji900,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+
+        const xValues = ['Uji 900','Uji 1400', 'Uji 2100'];
+        const yValues = [{{top_acc_uji900}}, {{top_acc_uji1400}}, {{top_acc_uji2100}}];
+        
+        let ctx = document.getElementById('Chard').getContext('2d');
+        let myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: 'Accuracy %',
+                data: yValues,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 85,
+                    max: 95
+                }
+            }
+        }
+    });
+        </script>
+        
+    {% endblock %}
+{% endblock %}
+

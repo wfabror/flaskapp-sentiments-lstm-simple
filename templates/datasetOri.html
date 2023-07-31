@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container fluid">
+        <div class="justify-center">
+
+            <br>
+            <h1>
+                Dataset Original
+            </h1>
+            <p>
+
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDataOri" aria-expanded="false" aria-controls="collapseDataOri">
+                    Dataset Train Sample
+                </button>
+            </p>
+            <div class="collapse" id="collapseDataOri">
+                    <table>
+                        {{ data_train | safe }}
+                    </table>
+            </div>
+            <br>
+            <p>
+
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseData900" aria-expanded="false" aria-controls="collapseData900">
+                    Dataset Uji 900 Sample
+                </button>
+            </p>
+            <div class="collapse" id="collapseData900">
+                    <table>
+                        {{ data_uji900 | safe }}
+                    </table>
+            </div>
+            <br>
+            <p>
+
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseData1400" aria-expanded="false" aria-controls="collapseData1400">
+                    Dataset Uji 1400 Sample
+                </button>
+            </p>
+            <div class="collapse" id="collapseData1400">
+                    <table>
+                        {{ data_uji1400 | safe }}
+                    </table>
+            </div>
+            <br>
+            <p>
+
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseData2100" aria-expanded="false" aria-controls="collapseData2100">
+                    Dataset Uji 2100 Sample
+                </button>
+            </p>
+            <div class="collapse" id="collapseData2100">
+                    <table>
+                        {{ data_uji2100 | safe }}
+                    </table>
+            </div>
+            <br>
+        </div>
+    </div>
+{% endblock %}
+</html>

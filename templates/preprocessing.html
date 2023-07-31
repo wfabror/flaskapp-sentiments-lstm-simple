@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container fluid">
+        <div class="justify-center">
+
+            <br>
+            <h1>
+                Hasil Preprocessing
+            </h1>
+            <br>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Data Uji 900
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ summary_uji900 | safe }}
+
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Data Uji 11400
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ summary_uji1400 | safe }}
+
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header text-center">
+                    <b>
+                        Data Uji 2100
+                    </b>
+                </div>
+                <div class="card-body">
+                    {{ summary_uji2100 | safe }}
+
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+{% endblock %}
